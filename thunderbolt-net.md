@@ -1,0 +1,2 @@
+# Networking
+I wanted to use USB C Thunderbolt networking for this since the plan was to run 3 Minisforum MS-01 nodes as a Proxmox cluster. The benefit of Thunderbolt networking is super fast speeds and low latency between nodes, and it doesn't use up any Ethernet or SFP+ ports. It also uses cabling that is inexpensive considering the use case. I'm currently testing with a $10 cable that is getting me ~18.5Gbps transfer speeds.
