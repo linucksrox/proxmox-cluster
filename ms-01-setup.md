@@ -1,3 +1,8 @@
+# DISCLAIMER
+This is just to document my personal setup. I'm not a Proxmox expert, just a lowly devops nerd who messes with my homelab in my free time. But I work in Linux for my day job and get to work on lots of cool tech professionally, so I think I'm beyond knowing "enough to be dangerous" and hopefully I know enough to be careful now :)
+
+This guide isn't meant to be full, comprehensive, etc. It's just enough for me to rebuild, rework, etc. as needed.
+
 # BIOS Setup
 - Boot into the BIOS and click through all the options, disabling ASPM anywhere it is mentioned (Active State Power Management). If you're running this as a server, you don't want devices going into low power states which can hypothetically cause performance or stability issues with said devices.
 - Optionally configure boot devices and boot order.
@@ -20,3 +25,6 @@
   - NOTE: This method applies during OS load, so if you reinstall Proxmox you will need to redo these steps. Once a BIOS update is available, this should be applied at the BIOS level and we can skip these steps (hopefully, eventually).
 - Optionally, if you want to make sure ASPM is disabled after loading the OS. You could also add this into crontab as a post boot task.
   - `grep -l -F '' /sys/bus/pci/devices/*/link/*pm | xargs -I {} sh -c "echo '0' > {}"`
+- If you're like me and don't have an Enterprise subscription to Proxmox, do the steps to disable the Enterprise apt repo and enable the no-subscription repo. CLI or UI, your choice :)
+  - Samesies for the Ceph no-subscription repo if you are going to install Ceph.
+- Set up any disks you are going to use for local storage. If you're going to be clustering, you may want to hold off and do shared storage a bit later, after getting networking and clustering done.
